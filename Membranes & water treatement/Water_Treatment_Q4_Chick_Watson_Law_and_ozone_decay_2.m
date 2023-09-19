@@ -1,0 +1,15 @@
+Q0= %m3/hr
+Q=Q0/60
+D=150*10^-3
+A=pi*(D/2)^2
+v=Q/A      %% m/min   must be m/min
+L=25
+c=0.6
+T=[]
+t_half_life=[30 20 15 12 8]                            %      half life for gas    mins   
+k_O3=-log(1/2)./t_half_life
+kp_Giardia = 1.038.*(1.0741).^T
+kp_viruses=2.1744.*(1.0726).^T
+con_time=L/v
+log_Giardia=c./(k_O3./(kp_Giardia.*(1-exp(-k_O3.*con_time))))    
+log_viruses=c./(k_O3./(kp_viruses.*(1-exp(-k_O3.*con_time))))
